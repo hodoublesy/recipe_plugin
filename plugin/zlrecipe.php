@@ -944,7 +944,8 @@ function amd_zlrecipe_insert_db($post_info) {
         $total_time = $post_info["total_time"];
     }
         
-    $recipe = array (
+    if (amd_zlrecipe_select_recipe_db($recipe_id) == null) {
+        $recipe = array (
         "post_id" => $post_info["post_id"],
         "recipe_title" => amd_zlrecipe_strip_chars( $post_info["recipe_title"] ),
         "recipe_image" => $post_info["recipe_image"],
@@ -959,12 +960,28 @@ function amd_zlrecipe_insert_db($post_info) {
         "fat" => $post_info["fat"],
         "ingredients" => amd_zlrecipe_strip_chars( $post_info["ingredients"] ),
         "instructions" => amd_zlrecipe_strip_chars( $post_info["instructions"] ),
-    );
-    
-    if (amd_zlrecipe_select_recipe_db($recipe_id) == null) {
-        $wpdb->insert( $wpdb->prefix . "amd_zlrecipe_recipes", $recipe );
+		"permalink" => get_permalink($post_info["post_id"]),
+		);
+		
+		$wpdb->insert( $wpdb->prefix . "amd_zlrecipe_recipes", $recipe );
         $recipe_id = $wpdb->insert_id;
     } else {
+		$recipe = array (
+        "recipe_title" => amd_zlrecipe_strip_chars( $post_info["recipe_title"] ),
+        "recipe_image" => $post_info["recipe_image"],
+        "summary" => amd_zlrecipe_strip_chars( $post_info["summary"] ),
+        "rating" => $post_info["rating"],
+        "prep_time" => $prep_time,
+        "cook_time" => $cook_time,
+        "total_time" => $total_time,
+        "yield" => $post_info["yield"],
+        "serving_size" => $post_info["serving_size"],
+        "calories" => $post_info["calories"],
+        "fat" => $post_info["fat"],
+        "ingredients" => amd_zlrecipe_strip_chars( $post_info["ingredients"] ),
+        "instructions" => amd_zlrecipe_strip_chars( $post_info["instructions"] ),
+		);
+		
         $wpdb->update( $wpdb->prefix . "amd_zlrecipe_recipes", $recipe, array( 'recipe_id' => $recipe_id ));
         //!!mwp $wpdb->query("DELETE FROM " . $wpdb->prefix . "amd_zlrecipe_ingredients WHERE recipe_id = '" . $recipe_id . "'");
     }
