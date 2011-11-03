@@ -665,8 +665,8 @@ function amd_zlrecipe_iframe_content($post_info = null, $get_info = null) {
     }
     
     //$id = (int) $_REQUEST["post_id"];
-	$id = (int) $get_info["post_id"];
-	$nid = $id . '-' . $recipe_id;
+    $id = (int) $get_info["post_id"];
+    $nid = $id . '-' . $recipe_id;
     $url = get_option('siteurl');
     $dirname = dirname(plugin_basename(__FILE__));
     $submitform = '';
@@ -750,7 +750,7 @@ function amd_zlrecipe_iframe_content($post_info = null, $get_info = null) {
                 return false;
             }
             //window.parent.amdZLRecipeInsertIntoPostEditor('$recipe_id','$url','$dirname');
-			window.parent.amdZLRecipeInsertIntoPostEditor('$nid','$url','$dirname');
+            window.parent.amdZLRecipeInsertIntoPostEditor('$nid','$url','$dirname');
         }
         
         $(document).ready(function() {
