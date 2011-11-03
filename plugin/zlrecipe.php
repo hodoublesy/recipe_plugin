@@ -938,24 +938,6 @@ function amd_zlrecipe_insert_db($post_info) {
         $total_time = $post_info["total_time"];
     }
     
-	//$pid = get_permalink(1137);
-    /*$recipe = array (
-        "post_id" => $post_info["post_id"],
-        "recipe_title" => amd_zlrecipe_strip_chars( $post_info["recipe_title"] ),
-        "recipe_image" => $post_info["recipe_image"],
-        "summary" => amd_zlrecipe_strip_chars( $post_info["summary"] ),
-        "rating" => $post_info["rating"],
-        "prep_time" => $prep_time,
-        "cook_time" => $cook_time,
-        "total_time" => $total_time,
-        "yield" => $post_info["yield"],
-        "serving_size" => $post_info["serving_size"],
-        "calories" => $post_info["calories"],
-        "fat" => $post_info["fat"],
-        "ingredients" => amd_zlrecipe_strip_chars( $post_info["ingredients"] ),
-        "instructions" => amd_zlrecipe_strip_chars( $post_info["instructions"] ),
-		"permalink" => $pid,
-    );*/
     $recipe = array (
         "post_id" => $post_info["post_id"],
         "recipe_title" => amd_zlrecipe_strip_chars( $post_info["recipe_title"] ),
