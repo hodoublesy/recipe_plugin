@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('...');
             ed.addCommand('WP_EditRecipe', function() {
                 var el = ed.selection.getNode(), vp = tinymce.DOM.getViewPort(), H = vp.h, W = ( 720 < vp.w ) ? 720 : vp.w, cls = ed.dom.getAttrib(el, 'class'), id = ed.dom.getAttrib(el, 'id').replace('amd-zlrecipe-recipe-', '');
-				alert(id);
+
                 if ( cls.indexOf('mceItem') != -1 || cls.indexOf('wpGallery') != -1 || el.nodeName != 'IMG' )
                     return;
 
