@@ -3,7 +3,7 @@ Plugin Name: ZipList Recipe Plugin
 Plugin URI: http://www.ziplist.com/recipe_plugin
 Plugin GitHub: https://github.com/Ziplist/recipe_plugin
 Description: A plugin that adds all the necessary microdata to your recipes, so they will show up in Google's Recipe Search
-Version: 1.4
+Version: 1.3
 Author: ZipList.com
 Author URI: http://www.ziplist.com/
 License: GPLv2 or later
@@ -39,11 +39,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('...');
             ed.addCommand('WP_EditRecipe', function() {
                 var el = ed.selection.getNode(), vp = tinymce.DOM.getViewPort(), H = vp.h, W = ( 720 < vp.w ) ? 720 : vp.w, cls = ed.dom.getAttrib(el, 'class'), id = ed.dom.getAttrib(el, 'id').replace('amd-zlrecipe-recipe-', '');
-
+				alert(id);
                 if ( cls.indexOf('mceItem') != -1 || cls.indexOf('wpGallery') != -1 || el.nodeName != 'IMG' )
                     return;
 
-                tb_show('', baseurl + '/wp-admin/media-upload.php?post_id=1-' + id + '&type=amd_zlrecipe&tab=amd_zlrecipe&TB_iframe=true&width=640&height=523');
+                //tb_show('', baseurl + '/wp-admin/media-upload.php?post_id=1-' + id + '&type=amd_zlrecipe&tab=amd_zlrecipe&TB_iframe=true&width=640&height=523');
+				tb_show('', baseurl + '/wp-admin/media-upload.php?post_id=' + id + '&type=amd_zlrecipe&tab=amd_zlrecipe&TB_iframe=true&width=640&height=523');
                 // tb_show('', url + '/editimage.html?ver=321&TB_iframe=true');
                 tinymce.DOM.setStyles('TB_window', {
                     'width':( W - 50 )+'px',
@@ -240,7 +241,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 author : 'ZipList, Inc.',
                 authorurl : 'http://www.ziplist.com/',
                 infourl : 'http://www.ziplist.com/recipe_plugin',
-                version : "1.4"
+                version : "1.2"
             };
         }
     });
