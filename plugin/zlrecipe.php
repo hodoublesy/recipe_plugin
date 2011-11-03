@@ -494,11 +494,6 @@ function amd_zlrecipe_iframe_content($post_info = null, $get_info = null) {
     		$submit = "Add Recipe";
         }
 		
-		$fp = fopen('data.txt', 'a');
-		fwrite($fp, "get info=" . $get_info["post_id"] . "\r\n");
-		fwrite($fp, "post info=" . $post_info["post_id"] . "\r\n\r\n");
-		fclose($fp);
-		
         if ($get_info["post_id"] && !$get_info["add-recipe-button"] && strpos($get_info["post_id"], '-') !== false) {
             $recipe_id = preg_replace('/[0-9]*?\-/i', '', $get_info["post_id"]);
             $recipe = amd_zlrecipe_select_recipe_db($recipe_id);
